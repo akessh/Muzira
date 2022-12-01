@@ -4,14 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:music_app_main/functions/functions.dart';
-import 'package:music_app_main/models/boxmodel.dart';
 import 'package:music_app_main/open%20audio/openaudio.dart';
 import 'package:music_app_main/widgets/miniplayer.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 
 
+
 class ScreenRecent extends StatefulWidget {
+
   const ScreenRecent({super.key});
 
   @override
@@ -21,7 +22,17 @@ class ScreenRecent extends StatefulWidget {
 class _ScreenRecentState extends State<ScreenRecent> {
   List<Audio>recentmusiclist=[];
   @override
+  void initState() {
+ if(recentsongs !=null){
+  recentsongs=box.get("recent");  
+ // print(recentsongs?.length);
+    super.initState();
+ }
+  }
+  List<dynamic>? recentsongs= [];
+  @override
   Widget build(BuildContext context) {
+
     Size size =MediaQuery.of(context).size;
     return Container(
        decoration: const BoxDecoration(
@@ -49,8 +60,8 @@ class _ScreenRecentState extends State<ScreenRecent> {
         body: ValueListenableBuilder(
           valueListenable: box.listenable(), 
           builder: (context, Boxes,_) {
-            final recentsongs=box.get("recent");
-            if(recentsongs==null||recentsongs.isEmpty){
+           //recentsongs=box.get("recent");
+            if(recentsongs==null||recentsongs!.isEmpty){
               return const Center(
                 child: Text('Oops...! \n No Recents',
                 style:TextStyle(
@@ -65,7 +76,7 @@ class _ScreenRecentState extends State<ScreenRecent> {
               return ListView.builder(
                 itemBuilder: (context, index) => GestureDetector(
                   onTap: () {
-                    for (var element in recentsongs){
+                    for (var element in recentsongs!){
                       recentmusiclist.add(
                         Audio.file(
                           element.uri!,
@@ -92,10 +103,10 @@ class _ScreenRecentState extends State<ScreenRecent> {
                         backgroundColor:Colors.transparent,
                       context: context, 
                       builder:(context) => MiniPlayer(
-                        index: index, audiosongs: audiosongs),);
+                        index: index, audiosongs: recentmusiclist),);
                   },
                   child: ListTile(
-                    leading: QueryArtworkWidget(id: recentsongs[index].id,
+                    leading: QueryArtworkWidget(id: recentsongs![index].id,
                      type: ArtworkType.AUDIO,
                      nullArtworkWidget: ClipOval(
                       child:Image.asset(
@@ -107,7 +118,7 @@ class _ScreenRecentState extends State<ScreenRecent> {
                 ),  
                      ),
                      ),
-                     title: Text(recentsongs[index].title,
+                     title: Text(recentsongs![index].title,
                      maxLines: 1,
                      overflow: TextOverflow.ellipsis,
                      style: const TextStyle(
@@ -115,8 +126,8 @@ class _ScreenRecentState extends State<ScreenRecent> {
                      ),
                      ),
                      subtitle: Text(
-                      recentsongs[index].artist=='<unknown>'?
-                      'Unknown Artist':recentsongs[index].artist,
+                      recentsongs![index].artist=='<unknown>'?
+                      'Unknown Artist':recentsongs![index].artist,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style:const TextStyle(
@@ -126,7 +137,7 @@ class _ScreenRecentState extends State<ScreenRecent> {
                      
                   ),
                 ),
-                itemCount: recentsongs.length,
+                itemCount: recentsongs!.length,
                 );
             }
             

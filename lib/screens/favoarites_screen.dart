@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:music_app_main/functions/functions.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:music_app_main/functions/recentfunction.dart';
-import 'package:music_app_main/models/boxmodel.dart';
 import 'package:music_app_main/open%20audio/openaudio.dart';
 import 'package:music_app_main/widgets/miniplayer.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -69,7 +68,7 @@ class _ScreenFavoritesState extends State<ScreenFavorites> {
                         );
                       }
                       PlayMyAudio(allSongs: PlayLikedSong, index: index).
-                      openAsset(index: index,audios: PlayLikedSong);
+                      openAsset(index: index,audios:audiosongs);
                       addrecent(index: index);
 
                       showBottomSheet(

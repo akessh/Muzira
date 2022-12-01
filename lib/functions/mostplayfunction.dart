@@ -1,51 +1,68 @@
 
-
-import 'package:flutter/material.dart';
 import 'package:music_app_main/functions/functions.dart';
 // import 'package:music_app_main/functions/recentfunction.dart';
 import 'package:music_app_main/models/songModel.dart';
  
 List<dynamic>mostplayedlistfun=[];
-List<dynamic>mostparylist=[];
+List mostparylist=[];
+List secmost=[];
 
 var mosttemp;
 var lasttemp;
- int count=1;
+//  int? count;
+
 
 addmostplayed({required int index}){
 
-  if(mostplayedlistfun.length<10){
-    
-    final mostsongs=box.get("musics") as List<LocalSongs>;
+  
+  // if(mostparylist != null){
+  //   mostparylist=box.get("mostplaypry")??secmost;
+  // }
 
+  if(mostparylist.length<10){
+     
+    final mostsongs=box.get("musics") as List<LocalSongs>;
+    
+    
      mosttemp=mostsongs.firstWhere((element) =>
      element.id.toString()==audiosongs[index].metas.id.toString() );
-    
-   
-    mostplayedlistfun.insert(0,mosttemp );
+
+      mostplayedlistfun.add(mosttemp );
     box.put("mostplay", mostplayedlistfun);
     
+    if(mostplayedlistfun.length<15){
+      int i;
+      
+      int count=0;
+    for( i=0;i<mostplayedlistfun.length;i++){
+      
+        if(mostplayedlistfun[i]==mosttemp){
+          count=count+1;
+        
+      }
+    }
+   if(count>=3){
 
-    // if (mostplayedlist.contains(temp)){
-    //   mostplayedprylist.insert(0, temp);
-    //   box.put("mostpry", mostplayedprylist);
-    // }
+      mostparylist.insert(0,mosttemp);
+      box.put("mostplaypry", mostparylist);
+    } 
+      
+    
+    }else{
+      mostplayedlistfun.removeAt(14);
 
-  }else{
-    mostplayedlistfun.removeAt(9);
-    box.put("mostplay", mostplayedlistfun);
+      box.put('mostplay', mostplayedlistfun);
 
-   
+  }  
 
-
-  //  mostplayedlist.forEach((dup) {
-  //  if( mostplayedlist.contains(dup["mostplay"])){
-  //    mostplayedprylist.insert(0, mostplayedlist);
-  //  box.put("mostpry", mostplayedprylist);
-
-  //  }
-  //  });
   
+  
+  
+  }else{
+    mostparylist.removeAt(9);
+    box.put("mostplaypry", mostparylist);
+
+   
 
   }
 

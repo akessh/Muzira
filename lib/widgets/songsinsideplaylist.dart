@@ -5,10 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:music_app_main/functions/functions.dart';
 import 'package:music_app_main/functions/playistfunctions.dart';
+import 'package:music_app_main/functions/recentfunction.dart';
 import 'package:music_app_main/models/boxmodel.dart';
 import 'package:music_app_main/open%20audio/openaudio.dart';
 import 'package:music_app_main/widgets/addSong.dart';
-import 'package:music_app_main/widgets/miniplayer.dart';
+import 'package:music_app_main/widgets/miniplayer2.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class songsinsideplaylist extends StatefulWidget {
@@ -99,7 +100,8 @@ class _songsinsideplaylistState extends State<songsinsideplaylist> {
                             ));
                           }
                           PlayMyAudio(allSongs: playlistplay, index: index).
-                          openAsset(index: index,audios: playlistplay);
+                          openAsset(index: index,audios: audiosongs);
+                          addrecent(index: index);
 
                           showBottomSheet(
                             shape: RoundedRectangleBorder(
@@ -108,7 +110,7 @@ class _songsinsideplaylistState extends State<songsinsideplaylist> {
                             ),
                             backgroundColor: Colors.grey,
                             context: context,
-                             builder:(context) => MiniPlayer(
+                             builder:(context) => SecondMiniPlayer(
                               index: index, audiosongs: playlistplay),);
                         },
                         child: ListTile(

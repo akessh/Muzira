@@ -5,7 +5,6 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:music_app_main/functions/functions.dart';
 import 'package:music_app_main/functions/playistfunctions.dart';
 import 'package:music_app_main/models/songModel.dart';
-import 'package:music_app_main/screens/playlist_song.dart';
 import 'package:music_app_main/widgets/playlistedit.dart';
 import 'package:music_app_main/widgets/songsinsideplaylist.dart';
 
@@ -148,7 +147,9 @@ class _ScreenPlayListState extends State<ScreenPlayList> {
               child: playlists[index] !="musics"&&
               playlists[index] !="favorites"&&
               playlists[index] !="recent"&&
-              playlists[index] !="mostplay"?librarylist(
+              playlists[index] !="mostplaypry"&&
+              playlists[index] !="mostplay"
+              ?librarylist(
               child: Padding(
                 padding: const EdgeInsets.all(4),
                 child: ListTile(

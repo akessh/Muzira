@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:linkify/linkify.dart';
 import 'package:music_app_main/functions/functions.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:url_launcher/link.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 bool temp=true;
 
@@ -43,7 +46,7 @@ static bool togglenotificationon({required bool isnotificationon}){
          colors:[
                     Color.fromARGB(255, 85, 84, 85) ,
                     Color.fromARGB(255, 130, 130, 130),
-                    Color.fromARGB(255, 85, 85, 85) ,
+                    Color.fromRGBO(85, 85, 85, 1) ,
          ]
         ),
       ),
@@ -144,9 +147,21 @@ static bool togglenotificationon({required bool isnotificationon}){
               title:const Text('Privacy Policy',style: TextStyle(
                       color: Color.fromARGB(255, 255, 255, 255),fontWeight:FontWeight.bold),),
                       onTap: () {
-                       // Share.share('https://www.freeprivacypolicy.com/live/bc67dc5c-6950-4601-9f53-47cbdbc8ff4d');
-                      // launch('https://www.freeprivacypolicy.com/live/bc67dc5c-6950-4601-9f53-47cbdbc8ff4d');
-                      linkify("https://www.freeprivacypolicy.com/live/bc67dc5c-6950-4601-9f53-47cbdbc8ff4d");
+//                        Linkify(
+//   onOpen: (link) async {
+//     if (await canLaunchUrlString("https://www.freeprivacypolicy.com/live/14c6c0e3-e81c-456b-93c3-3ea78c002e0b")) {
+//         await launchUrlString("https://www.freeprivacypolicy.com/live/14c6c0e3-e81c-456b-93c3-3ea78c002e0b");
+//       } else {
+//         throw 'Could not launch $link';
+//       }
+//   },
+//   text: "Made by Muzira",
+//   style: TextStyle(color: Colors.yellow),
+//   linkStyle: TextStyle(color: Colors.red),
+// );
+                        
+                        
+                     
                       },
             )
           ],

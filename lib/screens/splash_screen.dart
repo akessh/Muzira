@@ -53,7 +53,7 @@ class _ScreenSplashState extends State<ScreenSplash> {
       children: [
         Padding(
           padding:  EdgeInsets.only(top:size.height*0.2),
-          child:const Text('Listen To Music \n   You Actully Like',style: TextStyle(color: Colors.white,fontSize: 25,),),
+          child:const Text('Listen To Music \n You Actully Like',style: TextStyle(color: Colors.white,fontSize: 25,),),
         ),
 
         Padding(

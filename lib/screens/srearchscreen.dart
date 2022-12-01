@@ -1,8 +1,7 @@
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:miniplayer/miniplayer.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:music_app_main/functions/functions.dart';
 import 'package:music_app_main/functions/recentfunction.dart';
 import 'package:music_app_main/models/songModel.dart';
@@ -81,12 +80,10 @@ class _ScreenSearchState extends State<ScreenSearch> {
         backgroundColor:Colors.transparent,
         appBar: AppBar(
          backgroundColor:Colors.transparent,
-          title:const Text('Search',
-          style: TextStyle(
-            color: Colors.white,
-            fontFamily: "poppinz",
-            fontSize: 20,
-            fontWeight: FontWeight.bold),),
+          title: Text('Search',
+          style:
+            GoogleFonts.alef(color:Colors.white,letterSpacing: 1,fontSize: 25),
+            ),
         ),
         body: SafeArea(
           child:Column(
@@ -138,7 +135,7 @@ class _ScreenSearchState extends State<ScreenSearch> {
                             FocusManager.instance.primaryFocus?.unfocus();
 
                             showBottomSheet(
-                              backgroundColor:const Color.fromARGB(255, 11, 1, 17),
+                              backgroundColor:Colors.transparent,
                               shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(45),

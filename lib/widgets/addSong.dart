@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:music_app_main/functions/functions.dart';
 import 'package:music_app_main/functions/playistfunctions.dart';
 import 'package:music_app_main/models/boxmodel.dart';

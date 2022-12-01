@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:music_app_main/functions/functions.dart';
 import 'package:music_app_main/screens/favoarites_screen.dart';
 import 'package:music_app_main/screens/home.dart';
-import 'package:music_app_main/screens/mostplay.dart';
 import 'package:music_app_main/screens/playlist_screen.dart';
-import 'package:music_app_main/screens/recentscreen.dart';
+
 
 
 class screenmain extends StatefulWidget {

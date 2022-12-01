@@ -21,6 +21,11 @@ class MiniPlayer extends StatefulWidget {
 
 class _MiniPlayerState extends State<MiniPlayer> {
   AssetsAudioPlayer assetsaudioplayer = AssetsAudioPlayer.withId('0');
+
+  bool nxtdone=true;
+  bool previousdone=true;
+
+
   bool prevvisible = true;
   bool nxtvisible = true;
 
@@ -56,7 +61,7 @@ class _MiniPlayerState extends State<MiniPlayer> {
       return Padding(
         padding: const EdgeInsets.only(bottom: 58),
         child: SizedBox(
-            height: size.height * 0.09,
+            height: size.height * 0.10,
             child: ListTile(
               tileColor:const Color.fromARGB(255, 104, 102, 102),
               contentPadding: const EdgeInsets.only(bottom: 15, left: 5, top: 7),
@@ -112,8 +117,12 @@ class _MiniPlayerState extends State<MiniPlayer> {
                                   if (widget.index != audiosongs.length - 1) {
                                     nxtvisible = true;
                                   }
-                                  assetsAudioPlayer.previous();
                                 });
+                                if(previousdone){
+                                  previousdone=false;
+                                  assetsAudioPlayer.previous();
+                                  previousdone=true;
+                                }
                               },
                               icon: const Icon(
                                 Icons.skip_previous_sharp,
@@ -142,14 +151,18 @@ class _MiniPlayerState extends State<MiniPlayer> {
                       ? Visibility(
                           visible: nxtvisible,
                           child: IconButton(
-                              onPressed: () {
+                              onPressed: () async{
                                 setState(() {
                                   widget.index = widget.index + 1;
                                   if (widget.index > 0) {
                                     prevvisible = true;
                                   }
-                                  assetsAudioPlayer.next();
                                 });
+                                if(nxtdone){
+                                  nxtdone=false;
+                                 await assetsaudioplayer.next();
+                                  nxtdone=true;
+                                }
                               },
                               icon: const Icon(
                                 Icons.skip_next_sharp,

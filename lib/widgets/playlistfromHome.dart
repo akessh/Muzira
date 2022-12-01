@@ -81,6 +81,7 @@ Audio song;
                         if(playlistname !=''&&
                         playlistname !='favorites'&&
                         playlistname !='recent'&&
+                        playlistname !='mostplaypry'&&
                         playlistname !='mostplay'&&
                         excistingname.isEmpty
                         ){
@@ -116,7 +117,7 @@ Audio song;
             ),
             ),
             ...playlists.
-            map((element) => element !="musics"&& element != "favorites" && element != "recent"&& element !="mostplay"?
+            map((element) => element !="musics"&& element != "favorites" && element != "recent"&& element !="mostplaypry"&& element !="mostplay"?
                librarylist(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
@@ -146,8 +147,8 @@ Audio song;
                           await box.put(element,playlistsongs!);
                           Navigator.of(context).pop();
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content:const Text('Added To Playist',
+                            const SnackBar(
+                              content:Text('Added To Playlist',
                               style: TextStyle(
                                 fontFamily: "poppinz",
                                 fontSize: 15,
@@ -163,7 +164,7 @@ Audio song;
                          }else{
                           Navigator.of(context).pop();
                          ScaffoldMessenger.of(context).showSnackBar(
-                           SnackBar(content:Text('Already in Playlist',
+                           const SnackBar(content:Text('Already in Playlist',
                           style: TextStyle(
                             fontFamily: "poppinz",
                             fontSize: 15,

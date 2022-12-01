@@ -5,7 +5,6 @@ import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:music_app_main/functions/functions.dart';
-import 'package:music_app_main/open%20audio/openaudio.dart';
 import 'package:music_app_main/widgets/playlistfromHome.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
@@ -36,6 +35,8 @@ class PlayerMain extends StatefulWidget {
 
 
 class _PlayerMainState extends State<PlayerMain> {
+  bool nextdone=true;
+  bool predone=true;
   int repeat=0;
 
   bool previsible=true;
@@ -261,21 +262,21 @@ class _PlayerMainState extends State<PlayerMain> {
         
                   previsible ?Visibility(
                     visible: previsible,
-                    child: IconButton(onPressed: (){
+                    child: IconButton(onPressed: ()async{
+                       setState(() {
+                                  widget.index = widget.index + 1;
+                                  if (widget.index != audiosongs.length - 1) {
+                                    nextvisible = true;
+                                  }
+                                });
+                                if(predone){
+                                  predone=false;
+                                await  assetsAudioPlayer.previous();
+                                  predone=true;
+                                }
                       
-                      setState(() {
-                        widget.index= widget.index+1;
-                        if(widget.index!=audiosongs.length -1){
-                          nextvisible=true;
-                        }
-                        assetsAudioPlayer.previous();
-                        
                       
-
-                      });
-                      setState(() {
                         
-                      });
                       
                      }, 
                      icon:const Icon(
@@ -307,17 +308,21 @@ class _PlayerMainState extends State<PlayerMain> {
                   
                       nextvisible? Visibility(
                         visible: nextvisible,
-                        child: IconButton(onPressed: () {
+                        child: IconButton(onPressed: ()async {
 
-                          widget.index=widget.index+1;
-                          if(widget.index >0){
-                            previsible=true;
-                          }
-                          assetsAudioPlayer.next();
                           setState(() {
-                            
+                            widget.index=widget.index+1;
+                            if(widget.index>0){
+                              previsible=true;
+                            }
                           });
+                          if(nextdone){
+                              nextdone=false;
+                          await assetsAudioPlayer.next();
+                            nextdone=true;
+                            }
                           
+                      
                         },
                         
                                          

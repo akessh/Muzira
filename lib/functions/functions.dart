@@ -3,7 +3,6 @@
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 
-import 'package:flutter/material.dart';
 
 import 'package:music_app_main/models/boxmodel.dart';
 import 'package:music_app_main/models/songModel.dart';
@@ -22,17 +21,9 @@ List? databasesongs =[];
 
 //favourites---->
 List<Audio>PlayLikedSong=[];
-// List<LocalSongs> Likedsongsmodel = [];
-//final likedSongs = box.get("favorites");
+
 List<dynamic> favorites = [];
 
-//recents--->
-List<dynamic>recents=[];
-List<dynamic>?recentsongscop=[];
-
-//most played-------->
-// List<dynamic>mostplayed=[];
-// List<dynamic>mostplayedsongscop=[];
 
 
 fectchingSongs()async{
@@ -72,57 +63,13 @@ Audio find(List<Audio> source,String fromPath){
 //asset audio player--->
 AssetsAudioPlayer assetsAudioPlayer = AssetsAudioPlayer.withId('0');
 
-//recent songs add--------->
-// addrecent({required int index}){
-  
-//   if(recents.length<20){
+//fav
+List <dynamic> likedsongs=[];
 
-//     final songs = box.get("musics") as List<LocalSongs>;
+//playlist
 
-//     final temp=songs.firstWhere((element) =>
-//      element.id.toString()==audiosongs[index].metas.id.toString());
 
-//       recents.insert(0,temp);
-//      box.put("recent",recents);
 
-     
-//   }else{
-//     recents.removeAt(19);
-//     box.put("recent",recents);
-//   }
-//   // addmostplayed(index: index);
-  
-// }
-
-//mostplayed songs add--------->
-
-// addmostplayed({required int index}){
-// if(mostplayed.length<15){
-//   final mostsongs= box.get("musics") as List<LocalSongs>;
-
-//   final mosttemp=mostsongs.firstWhere((element) => 
-//   element.id.toString()==audiosongs[index].metas.id.toString());
-
-//   mostplayed.insert(0,mosttemp);
-//   box.put("mostplay", mostplayed);
-// }else{
-//   mostplayed.removeAt(14);
-//   box.put("mostplay", mostplayed);
-// }
-// }
-
-//Playlist-->
-// List playlists=[];
-// String? playlistname='';
-
-// List<dynamic>?playlistsongs=[];
-
-// List<Audio> playlistplay=[];
-
-// List<LocalSongs>playlistsongmodel=[];
-
-    
-  
 
 
 

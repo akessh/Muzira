@@ -21,10 +21,11 @@ Future<void> main() async {
     box.put('favorites', favoritelist);
   }
   List? recentBox= box.keys.toList();
-  if(!favoritesnew.contains('recent')){
+  if(!recentBox.contains('recent')){
     List<dynamic> recentslist=[];
     box.put('recent', recentslist);
   }
+  
 
   // List? mostbox=box.keys.toList();
   // if(!favoritesnew.contains('mostplay')){
